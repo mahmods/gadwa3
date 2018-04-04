@@ -1,0 +1,13 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class StudyTranslation extends Model
+{
+    //
+    public $timestamps = false;
+    protected $fillable = ['title','description'];
+    protected $table='studies_translations';
+}
