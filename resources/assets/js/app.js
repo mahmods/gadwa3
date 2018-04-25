@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
-//import VueRouter from 'vue-router';
+import VueRouter from 'vue-router';
 import App from './main.vue';
 import router from './router';
 //import injector from 'vue-inject';
 
+Vue.use(VueRouter);
 Vue.use(VeeValidate);
 Vue.use(VueResource);
-window.hostname='http://preview.mahacode.com/gadwa-new';
+window.hostname='http://localhost/gadwa3';
 
 /* eslint-disable no-new */
 /*
@@ -32,7 +33,6 @@ new Vue({
     router,
     template: '<App/>',
     components: { App }
-
 });
 
 

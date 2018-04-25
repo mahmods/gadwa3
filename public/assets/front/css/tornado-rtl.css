@@ -44,6 +44,8 @@
 html{font-size:14px;font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;direction:rtl;height:100%;background:#fafafa;color:rgba(0,0,0,0.80);position:relative;line-height:1.8;font-family:'Noto Sans','Helvetica Neue',Arial,Helvetica,sans-serif}
 ul,ol{line-height:1.5}
+.is-danger{color: red}
+
 article,aside,footer,header,nav,section,figcaption,figure,main{display:block}
 figure{margin:1em 40px}
 hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0;overflow:visible}

@@ -1,6 +1,5 @@
 @extends('front.layouts.front_layout')
 @section('content')
-
     <style>
         .table-title2, .table-title {
             width: 919px;

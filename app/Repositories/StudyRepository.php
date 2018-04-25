@@ -12,6 +12,7 @@ use App\Status;
 use Request;
 use App\Study;
 use Auth;
+use DB;
 use Session;
 
 /**
@@ -66,7 +67,7 @@ class StudyRepository extends BaseRepository
             $obj = Study::firstOrNew([
                 'id' => $request->input('studyId'),
             ]);
-            $obj->fill($request->all());
+            $obj->fill($request->except("id"));
             $obj->fill(['working_capital_months' => $request->working_capital_months]);
             $obj->save();
             return response()->json(['status_code' => 200]);
@@ -149,12 +150,21 @@ class StudyRepository extends BaseRepository
             if ($study) {
                 return response()->json(['status_code' => 200, 'study' => $study]);
             } else {
-                return response()->json([
-                    'error' => [
-                        'message' => 'Not Found',
-                        'status_code' => 404
-                    ]
-                ]);
+                $study = new Study();
+                $study->fill(['user_id' => $userId])->save();
+                DB::table('study_status')->insert(['study_id' => $study->id]);
+                DB::table('studies_assets')->insert(['study_id' => $study->id]);
+                DB::table('studies_competitors')->insert(['study_id' => $study->id]);
+                DB::table('studies_expenses')->insert(['study_id' => $study->id]);
+                DB::table('studies_finance_investments')->insert(['study_id' => $study->id]);
+                DB::table('studies_four_analyze')->insert(['study_id' => $study->id]);
+                DB::table('studies_increases_rate')->insert(['study_id' => $study->id]);
+                DB::table('studies_marketing')->insert(['study_id' => $study->id]);
+                DB::table('studies_products')->insert(['study_id' => $study->id]);
+                DB::table('studies_raw_materials')->insert(['study_id' => $study->id]);
+                DB::table('studies_sectors')->insert(['study_id' => $study->id]);
+
+                return response()->json(['status_code' => 200, 'study' => $study]);
             }
         }
 

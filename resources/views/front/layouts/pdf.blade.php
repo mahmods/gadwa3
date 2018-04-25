@@ -11,38 +11,53 @@
     <meta name="_token" content="{{ csrf_token() }}"/>
     <title>Gadwa</title>
     <!-- Required CSS Files -->
-    @include('front.includes.css')
+    <link href="{{ASSETS}}/front/css/tornado-rtl.css" rel="stylesheet">
+    <link href="{{ASSETS}}/front/css/animations.css" rel="stylesheet">
+    <link href="{{ASSETS}}/front/theme.css" rel="stylesheet">
+    
 </head>
 <body>
-<!-- loading -->  <div class='tornado-loader loading7'> <span class='loader22'><span class='loader22-inner'></span></span> </div>
 <!-- header -->
 <!-- // header -->
 <!-- page content -->
+<htmlpageheader name="page-header">
+</htmlpageheader>
+
+<htmlpagefooter name="page-footer">
+<img src="{{ASSETS}}/front/img/cover-footer.png" alt="" style="width:100%;"> 
+</htmlpagefooter>
 <div id="">
 
     <style>
-        .table-title2, .table-title {
-            width: 919px;
-            margin-right: 1px;
-        }
+      
+        @page {
+	header: page-header;
+	footer: page-footer;
+}
+
+
+
+body {
+	font-family: 'examplefont', sans-serif !important;
+}
     </style>
 
+
     <div class="container page-content">
-        <!-- page 0  -->
-        <div class="output-page cover">
-            <div class="icon"><img src="{{ASSETS}}/front/img/icon-cover.png" alt=""></div>
-            <h3>{{trans('report.study_report')}} <br> {{trans('report.for_project')}} {{$study->title}} </h3>
-            <h4 class="ti-calendar-io"><span><i>Sunday</i> Date : 28/5/2017</span></h4>
-            <h5></h5>
-        </div>
-        <!-- End Page 0 -->
+    <!-- page 0  -->
+    <div>
+        <h3 style="padding:20px 30px;background:#004b74;color:#FFF;text-align-center"> <span style="border: 5px solid #fff;
+;"> دراسة جدوي مشروع {{$study->title}}</span></h3>
+        <img src="{{ASSETS}}/front/img/cover.png" alt="" style="width:100%;"> 
+    </div>
+    <!-- End Page 0 -->
 
         <!-- Page 1 -->
-        <div class="output-page page-1">
+        <div class=" " style="">
             <div class="row">
                 <div class="col-s-5">
-                    <h3>{{trans('report.report_content')}}</h3>
-                    <ul class="index-list">
+                    <h3 class"page-title">{{trans('report.report_content')}}</h3>
+                    <ul class="index-list" style="padding:20px;font-size:16px;line-height:48px;">
                         <li>{{trans('report.project_info')}}</li>
                         <li>{{trans('report.market_info')}}</li>
                         <li>{{trans('report.productive_energy')}}</li>
@@ -55,14 +70,6 @@
                         <li>{{trans('report.financial_indicators')}}</li>
                     </ul>
                 </div>
-                <div class="col-s-7">
-                    <img src="{{ASSETS}}/front/img/n1.png" alt="" class="fluid">
-                </div>
-            </div>
-            <div class="pdf-footer">
-                <span>01</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
             </div>
         </div>
         <!-- End Page 1 -->
@@ -102,33 +109,26 @@
             </div>
 
             <div class="project-desc">
-                <h3>{{trans('report.project_description')}}</h3>
+                <h3 style="margin-top:-20px;">{{trans('report.project_description')}}</h3>
                 <div class="row row-zCenter">
                     <div class="col-s-9">
                         <p class="project-descrip">{{$study->description}}</p>
                     </div>
-                    <div class="col-s-3"><img src="{{ASSETS}}/front/img/icon-6.png" alt=""></div>
                 </div>
             </div>
 
-            <div class="list-area row row-zCenter">
+            <div class="">
                 <div class="col-s-7">
-                    <h3 class="main-title">{{trans('report.project_services_and_products')}}</h3>
-                    <ul class="services-list">
+                    <h3 class="page-title">{{trans('report.project_services_and_products')}}</h3>
+
+                    <ul class="">
                         @foreach($study->products as $i=>$product)
-                            <li>{{$product->title}}</li>
+                            <li style="font-size:20px;">{{$product->title}}</li>
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-s-5">
-                    <img src="{{ASSETS}}/front/img/icon-7.png" alt="" class="fluid">
-                </div>
             </div>
-            <div class="pdf-footer">
-                <span>02</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+            
         </div>
         <!-- End Page 2 -->
 
@@ -136,19 +136,22 @@
         <div class="output-page page-2">
             <h3 class="page-title">{{trans('report.market_info')}}</h3>
 
-            <div class="info-graphic-1">
-                <h3>{{trans('report.sectors_targeted')}}</h3>
-                <ul class="market-infographic">
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tbody>
+                    <tr>
+                        <td>{{trans('report.sectors_targeted')}}</td>
+                    </tr>
                     @foreach($study->studySector as $i=> $sector)
-                        <li>{{$sector->title}}</li>
+                        <tr>
+                            <td class="col-s-6">{{$sector->title}}</td>
+                        </tr>
                     @endforeach
-                </ul>
+                    </tbody>
+                </table>
             </div>
-            <div class="pdf-footer">
-                <span>03</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+
+        
         </div>
         <!-- End Page 3 -->
 
@@ -156,7 +159,6 @@
         <div class="output-page page-2">
             <h3 class="page-title">{{trans('report.competitors')}}</h3>
 
-            <img src="{{ASSETS}}/front/img/icon-9.png" alt="" class="table-icon">
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
                     <tbody>
@@ -176,96 +178,94 @@
                 </table>
             </div>
 
-            <img src="{{ASSETS}}/front/img/icon-10.png" alt="" class="center-icon">
             <h3 class="page-title">{{trans('report.marketing')}}</h3>
             <ul class="ui-tornado seco-list">
                 @foreach($study->marketing as $marketing)
                     <li>{{$marketing->title}} </li>
                 @endforeach
             </ul>
-            <div class="pdf-footer">
-                <span>04</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+            
         </div>
         <!-- End Page 4 -->
 
         <!-- Page 5 -->
         <div class="output-page page-2">
-            <div class="SWOT">
-                <div class="row">
-                    <div class="title">{{trans('report.four_analyze')}}</div>
-                    <div class="col-s-12 col-m-6">
-                        <div class="content-box">
-                            <h3><img src="{{ASSETS}}/front/img/icon-11.png"
-                                     alt="">{{trans('report.four_analyze_power')}}</h3>
-                            <ul class="ui-tornado seco-list dark">
-                                @foreach($study->four_analyze as $four_analyze)
-                                    @if($four_analyze->power)
-                                        <li>{{$four_analyze->power}}</li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-s-12 col-m-6">
-                        <div class="content-box">
-                            <h3><img src="{{ASSETS}}/front/img/icon-12.png"
-                                     alt="">{{trans('report.four_analyze_challenge')}} </h3>
-                            <ul class="ui-tornado seco-list dark">
-                                @foreach($study->four_analyze as $four_analyze)
-                                    @if($four_analyze->challenge)
-                                        <li>{{$four_analyze->challenge}}</li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+            <h3>{{trans('report.four_analyze')}}</h3>
 
-                    <div class="col-s-12 col-m-6">
-                        <div class="content-box">
-                            <h3><img src="{{ASSETS}}/front/img/icon-13.png"
-                                     alt="">{{trans('report.four_analyze_chance')}}  </h3>
-                            <ul class="ui-tornado seco-list dark">
-                                @foreach($study->four_analyze as $four_analyze)
-                                    @if($four_analyze->chance)
-                                        <li>{{$four_analyze->chance}}</li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-s-12 col-m-6">
-                        <div class="content-box">
-                            <h3><img src="{{ASSETS}}/front/img/icon-14.png"
-                                     alt=""> {{trans('report.four_analyze_athreat')}}</h3>
-                            <ul class="ui-tornado seco-list dark">
-                                @foreach($study->four_analyze as $four_analyze)
-                                    @if($four_analyze->athreat)
-                                        <li>{{$four_analyze->athreat}}</li>
-                                    @endif
-                                @endforeach
-
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tbody>
+                    <tr>
+                        <td>{{trans('report.four_analyze_power')}}</td>
+                    </tr>
+                    @foreach($study->four_analyze as $four_analyze)
+                        <tr>
+                            @if($four_analyze->power)
+                            <td class="col-s-6">{{$four_analyze->power}}</td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
 
-            <div class="pdf-footer">
-                <span>05</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tbody>
+                    <tr>
+                        <td>{{trans('report.four_analyze_challenge')}}</td>
+                    </tr>
+                    @foreach($study->four_analyze as $four_analyze)
+                        <tr>
+                            @if($four_analyze->challenge)
+                                <td>{{$four_analyze->challenge}}</td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
+
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tbody>
+                    <tr>
+                        <td>{{trans('report.four_analyze_chance')}}</td>
+                    </tr>
+                    @foreach($study->four_analyze as $four_analyze)
+                    <tr>
+                        @if($four_analyze->chance)
+                        <td>{{$four_analyze->chance}}</td>
+                        @endif
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tbody>
+                    <tr>
+                        <td>{{trans('report.four_analyze_athreat')}}</td>
+                    </tr>
+                    @foreach($study->four_analyze as $four_analyze)
+                        <tr>
+                            @if($four_analyze->athreat)
+                            <td>{{$four_analyze->athreat}}</td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
         </div>
         <!-- End Page 5 -->
 
         <!-- Page 6 -->
         <div class="output-page page-2">
-            <div class="production-title">{{trans('report.Production_capacity')}}</div>
+            <div class="page-title">{{trans('report.Production_capacity')}}</div>
 
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -283,26 +283,29 @@
                     @endforeach
                 </table>
             </div>
-            <div class="growing-infographic">
-                <div class="title"><img src="{{ASSETS}}/front/img/icon-16.png" alt="">
-                    {{trans('report.increases_rate')}}
-                </div>
-                @foreach($study->increases_rate as $increases_rate)
-                    <div class="year"> {{$increases_rate->years}} <span>{{$increases_rate->percentage}}%</span></div>
-                @endforeach
+
+            <div class="page-title">{{trans('report.increases_rate')}}</div>
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>السنة</td>
+                        <td>{{trans('report.increases_rate')}}</td>
+                    </tr>
+                    @foreach($study->increases_rate as $increases_rate)
+                        <tr>
+                            <td>{{$increases_rate->years}}</td>
+                            <td>{{$increases_rate->percentage}}%</td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
 
-            <div class="pdf-footer">
-                <span>06</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
         </div>
         <!-- End Page 6 -->
 
         <!-- Page 7 -->
         <div class="output-page page-2">
-            <h2 class="icon-title"><img src="{{ASSETS}}/front/img/icon-17.png" alt=""> {{trans('report.sales_count')}}
+            <h2 class="icon-title">{{trans('report.sales_count')}}
             </h2>
             <div class="responsive-table">
                 <table class="table dark-theme output-table align-center">
@@ -341,8 +344,7 @@
                     </tr>
                 </table>
             </div>
-            <h2 class="icon-title"><img src="{{ASSETS}}/front/img/icon-18.png"
-                                        alt="">{{trans('report.revenue_in_five_years')}}</h2>
+            <h2 class="icon-title">{{trans('report.revenue_in_five_years')}}</h2>
 
             <div class="responsive-table">
                 <table class="table dark-theme output-table align-center">
@@ -386,11 +388,6 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>07</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
         </div>
 
         <!-- End Page 7 -->
@@ -398,7 +395,7 @@
         <!-- Page 8 -->
         <div class="output-page page-2">
             <h2 class="icon-title2">
-                <img src="{{ASSETS}}/front/img/icon-19.png" alt="">{{trans('report.constructions_and_buildings')}}
+                {{trans('report.constructions_and_buildings')}}
             </h2>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -429,44 +426,34 @@
                 </table>
             </div>
             <div class="lands">
-                <img src="{{ASSETS}}/front/img/icon-20.png" alt="">
                 <h2>{{trans('report.lands')}}</h2>
-                <div class="line"></div>
-                @php $lands_sum=0; @endphp
-                @foreach($study->assets as $asset)
+                <div class="responsive-table">
+                    <table class="table dark-theme output-table">
+                        <tr>
+                            <td class="col-s-4">{{trans('report.lands_space')}}</td>
+                            <td class="col-s-4 align-center">{{trans('report.lands_price')}}</td>
+                            <td class="col-s-4 align-center">{{trans('report.lands_total')}}</td>
+                        </tr>
+                    @php $lands_sum=0; @endphp
+                    @foreach($study->assets as $asset)
                     @if($asset->deprecation_id==1)
-                        <div class="row">
-                            <div class="col-s-4">
-                                <h3>{{trans('report.lands_space')}}</h3>
-                                <h4>{{number_format($asset->space)}} </h4>
-                            </div>
-                            <div class="col-s-4">
-                                <h3>{{trans('report.lands_price')}}</h3>
-                                <h4>{{number_format($asset->value)}}  </h4>
-                            </div>
-                            <div class="col-s-4">
-                                <h3> {{trans('report.lands_total')}}</h3>
-                                <h4>{{number_format($asset->value*$asset->space)}} </h4>
-                            </div>
-                        </div>
+                        <tr>
+                            <td class="col-s-4">{{number_format($asset->space)}}</td>
+                            <td class="col-s-4 align-center">{{number_format($asset->value)}}</td>
+                            <td class="col-s-4 align-center">{{number_format($asset->value*$asset->space)}}</td>
+                        </tr>
                         @php $lands_sum+=$asset->value*$asset->space ;@endphp
                     @endif
                 @endforeach
-            </div>
-            <div class="pdf-footer">
-                <span>08</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
+                    </table>
+                </div>
             </div>
         </div>
         <!-- End Page 8 -->
 
         <!-- Page 9 -->
         <div class="output-page page-2">
-            <h2 class="icon-title2">
-                <img src="{{ASSETS}}/front/img/icon-21.png"
-                     alt="{{trans('report.machine_and_equipment')}}">{{trans('report.machine_and_equipment')}}
-            </h2>
+            <h2 class="icon-title2">{{trans('report.machine_and_equipment')}}</h2>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
                     <tr>
@@ -499,61 +486,38 @@
                 </table>
             </div>
             <div class="cars">
-                <div class="totaly">
-                    <img src="{{ASSETS}}/front/img/icon-22.png" alt="{{trans('report.cars')}}">
-                    <h3>{{trans('report.cars')}}</h3>
-                    <h5>{{trans('report.total_value')}}</h5>
-                    @php
-                        $sum_cars=0;
-                        foreach ($study->assets->where('deprecation_id',4) as $key=>$car)
-                        {
-                            $sum_cars+=$car->count*$car->value;
-                        }
-                        echo '<h3>'.$sum_cars.'</h3>';
-                    @endphp
-                </div>
-                @foreach($study->assets->where('deprecation_id',4) as $key=>$car)
-                    @if($key % 2 ==0 )
-                        <div class="right-cars">
-                            <div class="numbers">
-                                <h3>{{trans('report.count')}}</h3>
-                                <h4>{{$car->count}}</h4>
-                            </div>
-                            <div class="value">
-                                <h3>{{$car->title}}</h3>
-                                <h3>{{trans('report.value')}}</h3>
-                                <h3>{{$car->value}}</h3>
-                            </div>
-                            <div class="total-value">
-                                <h3>{{trans('report.total_value')}}</h3>
-                                <h4>{{$car->count*$car->value}}</h4>
-                            </div>
-                        </div>
-                    @else
-                        <div class="left-cars">
-                            <div class="numbers">
-                                <h3>{{trans('report.count')}}</h3>
-                                <h4>{{$car->count}}</h4>
-                            </div>
 
-                            <div class="value">
-                                <h3>{{$car->title}}</h3>
-                                <h3>{{trans('report.value')}}</h3>
-                                <h3>{{$car->value}}</h3>
-                            </div>
-                            <div class="total-value">
-                                <h3>{{trans('report.total_value')}}</h3>
-                                <h4>{{$car->count*$car->value}}</h4>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
+            <div class="responsive-table">
+                    <table class="table dark-theme output-table">
+                        <tr>
+                            <td class="col-s-4">{{trans('report.cars')}}</td>
+                            <td class="col-s-4 align-center">{{trans('report.total_value')}}</td>
+                            <td class="col-s-4 align-center">
+                                @php
+                                    $sum_cars=0;
+                                    foreach ($study->assets->where('deprecation_id',4) as $key=>$car)
+                                    {
+                                        $sum_cars+=$car->count*$car->value;
+                                    }
+                                    echo $sum_cars;
+                                @endphp
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table dark-theme output-table">
+                        @foreach($study->assets->where('deprecation_id',4) as $key=>$car)
+                        <tr>
+                            <td class="col-s-2">{{$car->title}}</td>
+                            <td class="col-s-4 align-center">{{trans('report.value')}} : {{$car->value}}</td>
+                            <td class="col-s-4 align-center">{{trans('report.total_value')}} : {{$car->count*$car->value}}</td>
+                            <td class="col-s-2 align-center">{{trans('report.count')}}  : {{$car->count}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
             </div>
-            <div class="pdf-footer">
-                <span>09</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+        
         </div>
         <!-- End Page 9 -->
 
@@ -564,8 +528,7 @@
             {{--<h2>=</h2>--}}
             {{--<h2>5 % </h2>--}}
             {{--</div>--}}
-            <h2 class="icon-title"><img src="{{ASSETS}}/front/img/icon-23.png"
-                                        alt="{{trans('report.furniture_and_fittings')}}">{{trans('report.furniture_and_fittings')}}
+            <h2 class="icon-title">{{trans('report.furniture_and_fittings')}}
             </h2>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -598,31 +561,29 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>10</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
         </div>
         <!-- End Page 10 -->
 
         <!-- Page 11 -->
         <div class="output-page page-2">
             <h3 class="page-title2">{{trans('report.pre_operating_expenses')}}</h3>
-            <ul class="infographic3">
-                @php $counter=0;$pre_operating_sum=0; @endphp
-                @foreach($study->assets->where('deprecation_id',5) as $key=>$pre_operating)
-                    <li><i>{{$counter+1}}</i>
-                        <p> {{$pre_operating->title}} <span>{{$pre_operating->value}}</span></p>
-                    </li>
-                    @php $counter++ @endphp
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    @php $pre_operating_sum=0; @endphp
+                    @foreach($study->assets->where('deprecation_id',5) as $key=>$pre_operating)
+                    <tr>
+                        <td class="col-s-4">{{$pre_operating->title}}</td>
+                        <td class="col-s-4 align-center">{{$pre_operating->value}}</td>
+                    </tr>
                     @php $pre_operating_sum+=$pre_operating->value; @endphp
-                @endforeach
-                <li><i>{{count($study->assets->where('deprecation_id',5))+1}}</i>
-                    <p> {{trans('report.total_pre_operating_expenses')}}
-                        <span>{{ $study->assets->where('deprecation_id',5)->sum('value') }}</span></p>
-                </li>
-            </ul>
+                    @endforeach
+                    <tr>
+                        <td class="col-s-4">{{trans('report.total_pre_operating_expenses')}}</td>
+                        <td class="col-s-4 align-center">{{ $study->assets->where('deprecation_id',5)->sum('value') }}</td>
+                    </tr>
+                </table>
+            </div>
+
             <h2 class="icon-title">{{trans('report.annual_depreciation_and_amortization')}}</h2>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -657,22 +618,25 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>11</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png"
-                     alt="{{trans('report.annual_depreciation_and_amortization')}}">
-            </div>
+            
         </div>
         <!-- End Page 11 -->
 
         <!-- Page 12 -->
         <div class="output-page page-2">
-            <h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-24.png" alt=""> {{trans('report.fixed_capital')}}
+            <h3 class="icon-title">{{trans('report.fixed_capital')}}
             </h3>
-            <canvas id="mony-charts"></canvas>
-            <h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-25.png" alt="">{{trans('report.operation_cost')}}
-            </h3>
+            <!-- راس المال الثابت  <canvas id="mony-charts"></canvas> -->
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>تكاليف الارض</td>
+                        <td>5464654646</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="icon-title">{{trans('report.operation_cost')}}</h3>
             <h3 class="page-title"> {{trans('report.operating_requirements')}} </h3>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -713,18 +677,23 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>12</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="{{trans('report.operating_requirements')}}">
-            </div>
+            
         </div>
         <!-- End Page 12 -->
 
         <!-- Page 13 -->
         <div class="output-page page-2">
             <h3 class="icon-title">{{trans('report.costs_of_utilities_and_services')}}</h3>
-            <canvas id="services-charts"></canvas>
+            <!-- تكاليف المنافع والخدمات  <canvas id="services-charts"></canvas> -->
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>تكاليف المنافع والخدمات </td>
+                        <td>5464654646</td>
+                    </tr>
+                </table>
+            </div>
+            
             @php
                 $sum_annual_utilities_and_services_expense=0;
                 foreach($study->expenses->where('category_id',1) as $key=>$utilities_and_services_expense)
@@ -732,8 +701,9 @@
                     $sum_annual_utilities_and_services_expense+=($utilities_and_services_expense->value*12);
                 }
             @endphp
-            <h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-26.png" alt=""> تكاليف التشغيل</h3>
+            <h3 class="icon-title">تكاليف التشغيل</h3>
             <h3 class="page-title">{{trans('report.administrative_and_general_expenses')}} </h3>
+            
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
                     <tr>
@@ -766,18 +736,12 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>13</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png"
-                     alt="{{trans('report.administrative_and_general_expenses')}}">
-            </div>
+        
         </div>
         <!-- End Page 13 -->
 
         <!-- Page 14 -->
         <div class="output-page page-2">
-            <img src="{{ASSETS}}/front/img/icon-27.png" alt="{{trans('report.marketing_costs')}}" class="table-icon">
             <h3 class="page-title">{{trans('report.marketing_costs')}}</h3>
 
             <div class="responsive-table">
@@ -815,51 +779,34 @@
             </div>
             <div class="lands">
                 <h2> {{trans('report.rent')}}</h2>
-                <div class="line"></div>
-                <div class="row">
-                    <div class="col-s-3">
-                        <h3>{{trans('report.rent_location')}}</h3>
-                    </div>
-                    <div class="col-s-3">
-                        <h3>{{trans('report.rent_space')}}</h3>
-                    </div>
-                    <div class="col-s-3">
-                        <h3>{{trans('report.monthly_rent')}}</h3>
-                    </div>
-                    <div class="col-s-3">
-                        <h3> {{trans('report.annual_rent')}}</h3>
-                    </div>
-                </div>
-                @foreach($study->expenses->where('category_id',4) as $key=>$rent)
-                    <div class="row">
-                        <div class="col-s-3">
-                            <h4>{{$rent->location}}</h4>
-                        </div>
-                        <div class="col-s-3">
-                            <h4>{{$rent->space}}</h4>
-                        </div>
-                        <div class="col-s-3">
-                            <h4>{{$rent->value}}</h4>
-                        </div>
-                        <div class="col-s-3">
-                            <h4>{{$rent->value*12}} </h4>
-                        </div>
-                    </div>
-                @endforeach
-                @php
-                    $sum_rent_annual=0;
-                    foreach ($study->expenses->where('category_id',4) as $key=>$rent)
-                    {
-                        $sum_rent_annual+=$rent->value*12;
-                    }
-                @endphp
-            </div>
 
-            <div class="pdf-footer">
-                <span>14</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
+                <div class="responsive-table">
+                    <table class="table dark-theme output-table">
+                        <tr>
+                            <td>{{trans('report.rent_location')}}</td>
+                            <td>{{trans('report.rent_space')}}</td>
+                            <td class="align-center">{{trans('report.monthly_rent')}}</td>
+                            <td class="align-center">{{trans('report.annual_rent')}} </td>
+                        </tr>
+                        @foreach($study->expenses->where('category_id',4) as $key=>$rent)
+                        <tr>
+                            <td>{{$rent->location}}</td>
+                            <td>{{$rent->space}}</td>
+                            <td class="align-center">{{$rent->value}}</td>
+                            <td class="align-center"> {{$rent->value*12}}</td>
+                        </tr>
+                        @endforeach
+                        @php
+                            $sum_rent_annual=0;
+                            foreach ($study->expenses->where('category_id',4) as $key=>$rent)
+                            {
+                                $sum_rent_annual+=$rent->value*12;
+                            }
+                        @endphp
+                    </table>
+                </div>
             </div>
+        
         </div>
         <!-- End Page 14 -->
 
@@ -868,7 +815,6 @@
 
         <!-- Page 16 -->
         <div class="output-page page-2">
-            <img src="{{ASSETS}}/front/img/icon-30.png" alt="{{trans('report.salaries_and_wages')}}" class="icon-block">
             <h3 class="page-title">{{trans('report.salaries_and_wages')}}</h3>
             <div class="responsive-table">
                 <table class="table dark-theme output-table">
@@ -908,163 +854,133 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>16</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="{{trans('report.salaries_and_wages')}}">
-            </div>
+            
         </div>
         <!-- End Page 16 -->
 
-            <!-- Page 17 -->
-            {{--<div class="output-page page-2">--}}
-            {{--<h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-24.png" alt=""> راس المال الثابت </h3>--}}
-            {{--<canvas id="mony-charts2"></canvas>--}}
+        <!-- Page 17 -->
+        {{--<div class="output-page page-2">--}}
+        {{--<h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-24.png" alt=""> راس المال الثابت </h3>--}}
+        {{--<canvas id="mony-charts2"></canvas>--}}
 
-            {{--<h3 class="ras-title">مدة رأس المال العامل</h3>--}}
-            {{--<h3 class="ras-date">راس المال العامل <span>شهرا </span></h3>--}}
-
-            {{--<div class="pdf-footer">--}}
-            {{--<span>17</span>--}}
-            {{--<i>www.gadwa.com</i>--}}
-            {{--<img src="{{ASSETS}}/front/img/logo-new.png" alt="">--}}
-            {{--</div>--}}
-            {{--</div>--}}
+        {{--<h3 class="ras-title">مدة رأس المال العامل</h3>--}}
+        {{--<h3 class="ras-date">راس المال العامل <span>شهرا </span></h3>--}}
+        {{--</div>--}}
         <!-- End Page 17 -->
 
         <!-- Page 18 -->
         <div class="output-page page-2">
-            <img src="{{ASSETS}}/front/img/icon-31.png" alt="{{trans('report.working_capital')}}" class="icon-block">
-            <h3 class="ras-head">{{trans('report.working_capital')}}</h3>
-            <ul class="ras-list">
-                <li>
-                    <i>1</i>
-                    {{trans('report.wages_and_salaries_of_operating_value')}}
-                    <span>{{$total_sum_annual_salary}} </span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($total_sum_annual_salary*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                <li>
-                    <i>2</i>
-                    {{trans('report.total_cost_of_operating_materials_value')}}
-                    <span>{{$sum_raw_materials_annual}}</span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($sum_raw_materials_annual*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                <li>
-                    <i>3</i>
-                                تكاليف المنافع والخدمات القيمه
-                    <span>{{$sum_annual_utilities_and_services_expense}}</span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($sum_annual_utilities_and_services_expense*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                <li>
-                    <i>4</i>
-                    {{trans('report.general_expenses_value')}}
-                    <span>{{$sum_annual_general_expense}}</span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($sum_annual_general_expense*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                <li>
-                    <i>5</i>
-                    {{trans('report.marketing_expenses_value')}}
-                    <span>{{$sum_annual_marketing_expense}}</span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($sum_annual_marketing_expense*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                <li>
-                    <i>6</i>
-                    {{trans('report.rent_expenses_value')}}
-                    <span>{{$sum_rent_annual}}</span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{($sum_rent_annual*$study->working_capital_months)/12}}
-                    </div>
-                </li>
-                @php
-                    $fixed_capital=$constructions_and_buildings_sum+
-                                    $lands_sum+
-                                    $sum_equipment+
-                                    $sum_cars+
-                                    $sum_furniture+
-                                    $pre_operating_sum;
-                    $working_capital=(
-                                    $sum_annual_utilities_and_services_expense+
-                                    $total_sum_annual_salary+
-                                    $sum_annual_general_expense+
-                                    $sum_annual_marketing_expense+
-                                    $sum_rent_annual+
-                                    $sum_raw_materials_annual
-                                    );
+            <h3 class="page-title">{{trans('report.working_capital')}}</h3>
 
-                    $final_working_capital=$working_capital*($study->working_capital_months/12);
-                @endphp
-                <li>
-                    <i>7</i>
-                    {{trans('report.total_value')}}
-                    <span>
-                        {{
-                        $working_capital
-                        }}
-                    </span>
-                    <div class="boxing">
-                        {{trans('report.working_capital_for_month')}}
-                        {{$working_capital*($study->working_capital_months/12)}}
-                    </div>
-                </li>
-            </ul>
-            <div class="pdf-footer">
-                <span>18</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>{{trans('report.wages_and_salaries_of_operating_value')}}</td>
+                        <td>{{$total_sum_annual_salary}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($total_sum_annual_salary*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.total_cost_of_operating_materials_value')}}</td>
+                        <td>{{$sum_raw_materials_annual}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($sum_raw_materials_annual*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    <tr>
+                        <td>تكاليف المنافع والخدمات القيمه</td>
+                        <td>{{$sum_annual_utilities_and_services_expense}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($sum_annual_utilities_and_services_expense*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.general_expenses_value')}}</td>
+                        <td>{{$sum_annual_general_expense}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($sum_annual_general_expense*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.marketing_expenses_value')}}</td>
+                        <td>{{$sum_annual_marketing_expense}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($sum_annual_marketing_expense*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.rent_expenses_value')}}</td>
+                        <td>{{$sum_rent_annual}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{($sum_rent_annual*$study->working_capital_months)/12}}</td>
+                    </tr>
+                    @php
+                        $fixed_capital=$constructions_and_buildings_sum+
+                                        $lands_sum+
+                                        $sum_equipment+
+                                        $sum_cars+
+                                        $sum_furniture+
+                                        $pre_operating_sum;
+                        $working_capital=(
+                                        $sum_annual_utilities_and_services_expense+
+                                        $total_sum_annual_salary+
+                                        $sum_annual_general_expense+
+                                        $sum_annual_marketing_expense+
+                                        $sum_rent_annual+
+                                        $sum_raw_materials_annual
+                                        );
+
+                        $final_working_capital=$working_capital*($study->working_capital_months/12);
+                    @endphp
+                    <tr>
+                        <td>{{trans('report.total_value')}}</td>
+                        <td>{{$working_capital}}</td>
+                        <td class="align-center">{{trans('report.working_capital_for_month')}}</td>
+                        <td class="align-center">{{$working_capital*($study->working_capital_months/12)}}</td>
+                    </tr>
+                </table>
             </div>
+        
         </div>
         <!-- End Page 18 -->
 
         <!-- Page 19 -->
 
         <div class="output-page page-2">
-            <div class="total-inv">
-                <h3 class="icon-title"><img src="{{ASSETS}}/front/img/icon-32.png" alt=""> اجمالي الاستثمار</h3>
-                <ul class="infographic4">
-                    <li><span>{{number_format($fixed_capital)}} </span> رأس المال الثابت
-                    </li>
-                    <li><span>
-                            {{number_format($working_capital*($study->working_capital_months/12))}}
-                        </span> رأس المال العامل
-                    </li>
-                    <li><span>
-                            {{number_format($fixed_capital+($working_capital*($study->working_capital_months/12))) }}
-                        </span> رأس المال المستثمر
-                    </li>
-                </ul>
+            <h3 class="page-title">اجمالي الاستثمار</h3>
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>رأس المال الثابت</td>
+                        <td>{{number_format($fixed_capital)}}</td>
+                    </tr>
+                    <tr>
+                        <td>رأس المال العامل</td>
+                        <td>{{number_format($working_capital*($study->working_capital_months/12))}}</td>
+                    </tr>
+                    <tr>
+                        <td>رأس المال المستثمر</td>
+                        <td>{{number_format($fixed_capital+($working_capital*($study->working_capital_months/12))) }}</td>
+                    </tr>
+                </table>
             </div>
-            <ul class="infographic5">
-                @if($study->financeInvestments)
-                    <li>{{trans('report.financeInvestments')}} <img src="{{ASSETS}}/front/img/icon-33.png" alt=""></li>
-                    <li>{{trans('report.financeInvestments_personal_investment')}}<span>{{$study->financeInvestments->personal_investment}}
-                            %</span></li>
-                    <li> {{trans('report.financeInvestments_loan')}}<span>{{$study->financeInvestments->loan}}%</span>
-                    </li>
-                    <li>{{trans('report.financeInvestments_other')}} <span>{{$study->financeInvestments->other}}%</span>
-                    </li>
-                @endif
-            </ul>
-            <div class="pdf-footer">
-                <span>19</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
+
+            @if($study->financeInvestments)
+            <h3 class="page-title">{{trans('report.financeInvestments')}}</h3>
+
+            <div class="responsive-table">
+                <table class="table dark-theme output-table">
+                    <tr>
+                        <td>{{trans('report.financeInvestments_personal_investment')}}</td>
+                        <td>{{$study->financeInvestments->personal_investment}}%</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.financeInvestments_loan')}}</td>
+                        <td>{{$study->financeInvestments->loan}}%</td>
+                    </tr>
+                    <tr>
+                        <td>{{trans('report.financeInvestments_other')}}</td>
+                        <td>{{$study->financeInvestments->other}}%</td>
+                    </tr>
+                </table>
             </div>
+            @endif
         </div>
         <!-- End Page 19 -->
 
@@ -1167,11 +1083,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>20</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+           
         </div>
 
         <!-- End Page 20 -->
@@ -1429,11 +1341,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdf-footer">
-                <span>21</span>
-                <i>www.gadwa.com</i>
-                <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-            </div>
+           
         </div>
         <!-- End Page 21 -->
 

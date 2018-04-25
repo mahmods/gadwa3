@@ -165,7 +165,7 @@ class StudiesController extends Controller
         $deprecations=Deprecation::all();
         $expenses_categories=ExpenseCategories::all();
         // $pdf = PDF::loadView('front.layouts.report',compact('study','deprecations','expenses_categories'));
-		//return $pdf->stream('document.pdf');
+        //return $pdf->stream('document.pdf');
         return view('front.layouts.report',compact('study','deprecations','expenses_categories'));
     }
 

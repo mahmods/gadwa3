@@ -234,12 +234,12 @@ footer .logo img{display:inline-block;vertical-align:middle;margin-top:70px;}
 .output-page.page-1 .index-list li{margin-top:20px;font-size:20px;line-height:40px;color:#036db6;}
 .output-page.page-1 .index-list li:before{content:'';display:inline-block;margin-left:20px;height:4px;width:26px;background:#036db6;vertical-align:middle;}
 /* Output Page 2 */
-.page-title{margin:auto;width:350px;height:55px;font-size:25px;line-height:50px;color:#FFF;text-align:center;background:#036db6;margin-top:30px;}
-.output-table{margin-top:35px;}
-.output-table + table{margin-top:0;}
-.output-table tr:nth-child(odd){background:#036db6;}
-.output-table tr:nth-child(even){background:#00a0e1;}
-.output-table td{font-size:17px;font-weight:500;border:1px solid #FFF;}
+.page-title{margin:auto;width:350px;height:55px;font-size:25px;line-height:50px;color:#2b2b2b;text-align:center;background:#036db6;margin-top:30px;}
+.output-table{margin-top:35px;border:1px solid rgba(0, 0, 0, 0.10);}
+.output-table + table{margin-top:0;border:1px solid rgba(0, 0, 0, 0.10);}
+.output-table tr:nth-child(odd){background:#137abb;color:#FFF !important;}
+.output-table tr:nth-child(even){background:#036db6;color:#FFF !important;}
+.output-table td{font-size:17px;font-weight:500;border:1px solid rgba(0,0,0,.10);}
 .project-desc{margin-top:100px;padding:50px;-webkit-border-radius:30px;border-radius:30px;border:2px solid #036db6;position:relative;}
 .project-desc h3{line-height:50px;width:450px;text-align:center;font-size:22px;line-height:47px;color:#FFF;text-align:center;background:#036db6;margin-top:50px;position:absolute;right:-2px;top:-75px;}
 .project-desc p{font-size:19px;font-weight:500;color:#036db6;margin:0;}

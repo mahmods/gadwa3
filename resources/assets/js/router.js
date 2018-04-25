@@ -1,6 +1,4 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-
+import VueRouter from 'vue-router';
 
 import Stepone from './components/Stepone.vue';
 import Steptwo from './components/Steptwo.vue';
@@ -12,15 +10,14 @@ import Stepsix from './components/Stepsix.vue';
 // import Stepeight from './components/Stepeight.vue';
 // import Stepsroute from './components/Stepsroute.vue';
 
-Vue.use(Router);
 
-
-export default new Router({
+export default new VueRouter({
     routes: [
         {
             path: '/',
             name: 'Stepone',
-            component: Stepone
+            component: Stepone,
+            props: true
         },
         {
             path: '/step-2',
@@ -47,10 +44,5 @@ export default new Router({
             name: 'Stepsix',
             component: Stepsix
         },
-        /*{
-            path: '/coins/:id',
-            name: 'Coins',
-            component: Coins
-        }*/
     ]
 });

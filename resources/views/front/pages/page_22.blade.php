@@ -54,8 +54,6 @@
                 @endforeach
 
             </tr>
-
-
             <tr>
                 <td>{{trans('report.total_expenses')}}</td>
                 <td class="align-center"></td>
@@ -92,95 +90,6 @@
                 <td class="align-center"></td>
                 <td class="align-center"></td>
             </tr>
-            <tr>
-                <td>اجمالى التدفقات النقديه الداخله</td>
-                <td class="align-center">10,489,800</td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-        </table>
-        <h3 class="table-title">التدفقات النقديه الخارجه</h3>
-        <table class="table dark-theme output-table">
-            <tr>
-                <td>الأصول الثابتة</td>
-                <td class="align-center">8,986,000</td>
-                <td class="align-center">-</td>
-                <td class="align-center">-</td>
-                <td class="align-center"></td>
-                <td class="align-center"></td>
-                <td class="align-center"></td>
-            </tr>
-            <tr>
-                <td>مصروفات التأسيس</td>
-                <td class="align-center">8,834,211</td>
-                <td class="align-center">-</td>
-                <td class="align-center"></td>
-                <td class="align-center"></td>
-                <td class="align-center"></td>
-                <td class="align-center"></td>
-            </tr>
-            <tr>
-                <td>الذكاه</td>
-                <td class="align-center"></td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-            <tr>
-                <td>توزيعات ارباح</td>
-                <td class="align-center"></td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-            <tr>
-                <td>اجمالى التدفقات الخارجه</td>
-                <td class="align-center">8,834,211</td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-            <tr>
-                <td>صافي التدفقات</td>
-                <td class="align-center">8,834,211</td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-            <tr>
-                <td>النقدية كما في بداية السنة</td>
-                <td class="align-center"></td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-            <tr>
-                <td>النقدية كما في نهاية السنة</td>
-                <td class="align-center"></td>
-                <td class="align-center">10,096,242</td>
-                <td class="align-center">10,727,257</td>
-                <td class="align-center">11,358,272</td>
-                <td class="align-center">12,620,302</td>
-                <td class="align-center">12,620,302</td>
-            </tr>
-        </table>
     </div>
-    <div class="pdf-footer">
-        <span>22</span>
-        <i>www.gadwa.com</i>
-        <img src="{{ASSETS}}/front/img/logo-new.png" alt="">
-    </div>
+   
 </div>

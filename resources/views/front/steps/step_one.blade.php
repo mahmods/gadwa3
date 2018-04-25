@@ -2,8 +2,5 @@
 @section('js')
 @endsection
 @section('content')
-    <div id="app">
-        <App></App>
-
-    </div>
+<div id="app"></div>
 @endsection

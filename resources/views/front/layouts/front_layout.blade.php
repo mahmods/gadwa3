@@ -14,16 +14,17 @@
     @include('front.includes.css')
 </head>
 <body>
-<!-- loading -->  <div class='tornado-loader loading7'> <span class='loader22'><span class='loader22-inner'></span></span> </div>
+<!-- loading -->
+<div class='tornado-loader loading7'> <span class='loader22'><span class='loader22-inner'></span></span> </div>
+
 <!-- header -->
 @include('front.includes.header')
 <!-- // header -->
-<!-- page content -->
-<div id="">
-    @yield('content')
-</div>
 
+<!-- page content -->
+@yield('content')
 <!-- // page content -->
+
 <!-- footer -->
 <footer>
     <div class="container">
